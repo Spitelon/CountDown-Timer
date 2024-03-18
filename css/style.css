@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,700;1,700&display=swap');
+
+:root {
+  /* Colors */
+  --color-grayish-blue: rgb(132, 134, 169);
+  --color-soft-red: hsl(345, 95%, 68%);
+  --color-darker-red: rgb(224, 72, 110);
+  --color-white: hsl(0, 0%, 100%);
+  --color-dark-desaturated-blue: hsl(236, 21%, 26%);
+  --color-darker-desaturated-blue: hsl(236, 26%, 23%);
+  --color-very-dark-blue: hsl(235, 16%, 14%);
+  --color-very-dark-black-blue: hsl(234, 17%, 12%);
+
+  /* Typography */
+  --font-family: 'Red Hat Text', sans-serif;
+  --font-weight: 700;
+  --font-size-body: 14px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight);
+  font-family: var(--font-family);
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.countdown__section {
+  text-align: center;
+}
+
+.background__color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-image: linear-gradient(var(--color-very-dark-blue), rgb(46, 26, 40));
+}
+
+.backgrounds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../Images/bg-stars.svg), url(../Images/pattern-hills.svg);
+  background-size: auto, contain;
+  background-position: top, bottom;
+  background-repeat: repeat-x, no-repeat;
+  z-index: -1;
+}
+
+.countdown__header {
+  color: var(--color-white);
+  font-size: 2rem;
+  margin-top: 6rem;
+  margin-bottom: 7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6rem;
+}
+
+.countdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.time-section {
+  text-align: center;
+  font-size: 30px;
+}
+
+.time-group {
+  display: flex;
+}
+
+.time__name {
+  color: var(--color-grayish-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.6rem;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+}
+
+.time-segment {
+  display: block;
+  font-size: 100px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.segment-display {
+  position: relative;
+  height: 100%;
+}
+
+.segment-display__top,
+.segment-display__bottom {
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+  position: relative;
+}
+
+.segment-display__top {
+  line-height: 2;
+  color: var(--color-darker-red);
+  background-color: var(--color-darker-desaturated-blue);
+  border-radius: 10% 10% 0 0;
+}
+
+.segment-display__bottom {
+  line-height: 0;
+  color: var(--color-soft-red);
+  background-color: var(--color-dark-desaturated-blue);
+  border-radius: 0 0 10% 10%;
+  box-shadow: 0 1rem 0 var(--color-very-dark-black-blue);
+}
+
+.segment-overlay {
+  position: absolute;
+  top: 0;
+  perspective: 400px;
+  height: 100%;
+  width: 100%;
+}
+
+.segment-overlay__top,
+.segment-overlay__bottom {
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+}
+
+.segment-overlay__top {
+  top: 0;
+  line-height: 2;
+  color: var(--color-darker-red);
+  background-color: var(--color-darker-desaturated-blue);
+  transform-origin: bottom;
+  border-radius: 10% 10% 0 0;
+}
+
+.segment-overlay__bottom {
+  bottom: 0;
+  line-height: 0;
+  color: var(--color-soft-red);
+  background-color: var(--color-dark-desaturated-blue);
+  border-top: 2px solid rgba(0, 0, 0, 0.3);
+  transform-origin: top;
+  border-radius: 0 0 10% 10%;
+}
+
+.segment-overlay.flip .segment-overlay__top {
+  animation: flip-top 0.8s linear;
+}
+
+.segment-overlay.flip .segment-overlay__bottom {
+  animation: flip-bottom 0.8s linear;
+}
+
+@keyframes flip-top {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  50%,
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flip-bottom {
+
+  0%,
+  50% {
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+}
+
+.socials__group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 2rem;
+  color: var(--color-grayish-blue);
+
+}
+
+.socials__group a:hover {
+  transition: 0.3s;
+  color: var(--color-soft-red);
+}
+
+@media all and (max-width: 1024px) {
+  .time__name {
+    letter-spacing: 0.4rem;
+    font-size: 0.8rem;
+    margin-top: 2.5rem;
+  }
+
+  .countdown__header {
+    margin-bottom: 3rem;
+  }
+
+  .time-segment {
+    font-size: 70px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .segment-overlay__top,
+  .segment-display__top {
+    line-height: 2.140;
+  }
+
+  .backgrounds {
+    background-size: auto;
+  }
+
+  .segment-display__bottom {
+    box-shadow: 0 0.7rem 0 var(--color-very-dark-black-blue);
+  }
+}
+
+@media all and (max-width: 768px) {
+  .time__name {
+    letter-spacing: 0.3rem;
+    font-size: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .countdown {
+    gap: 20px;
+  }
+
+  .time-segment {
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .segment-overlay__top,
+  .segment-display__top {
+    line-height: 1.965;
+  }
+
+  .segment-display__bottom {
+    box-shadow: 0 0.6rem 0 var(--color-very-dark-black-blue);
+  }
+
+  .countdown__section {
+    margin-top: 8rem;
+  }
+}
+
+@media all and (max-width: 480px) {
+
+  .time__name {
+    letter-spacing: 0.2rem;
+    font-size: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .countdown {
+    gap: 10px;
+  }
+
+  .time-segment {
+    font-size: 35px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .segment-overlay__top,
+  .segment-display__top {
+    line-height: 2.2;
+  }
+
+  .segment-display__bottom {
+    box-shadow: 0 0.4rem 0 var(--color-very-dark-black-blue);
+  }
+
+  .socials__group {
+    gap: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .countdown__header {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.4rem;
+  }
+
+  .countdown__section {
+    margin-top: 8rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .countdown {
+    flex-wrap: wrap;
+  }
+
+
+  .countdown__section {
+    margin-top: 0rem;
+  }
+
+  .countdown__header {
+    margin-top: 4rem;
+  }
+}
