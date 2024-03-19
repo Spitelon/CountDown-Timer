@@ -50,20 +50,33 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: -3;
   background-image: linear-gradient(var(--color-very-dark-blue), rgb(46, 26, 40));
 }
 
-.backgrounds {
+.background__stars {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../Images/bg-stars.svg), url(../Images/pattern-hills.svg);
-  background-size: auto, contain;
-  background-position: top, bottom;
-  background-repeat: repeat-x, no-repeat;
+  background-image: url(../Images/bg-stars.svg);
+  background-size:contain;
+  background-position: top;
+  background-repeat: repeat-x;
+  z-index: -2;
+}
+
+.background__mountains {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../Images/pattern-hills.svg);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
   z-index: -1;
 }
 
@@ -123,7 +136,7 @@ a {
 }
 
 .segment-display__top {
-  line-height: 2;
+  line-height: 1.970;
   color: var(--color-darker-red);
   background-color: var(--color-darker-desaturated-blue);
   border-radius: 10% 10% 0 0;
@@ -156,7 +169,7 @@ a {
 
 .segment-overlay__top {
   top: 0;
-  line-height: 2;
+  line-height: 1.970;
   color: var(--color-darker-red);
   background-color: var(--color-darker-desaturated-blue);
   transform-origin: bottom;
@@ -243,10 +256,10 @@ a {
 
   .segment-overlay__top,
   .segment-display__top {
-    line-height: 2.140;
+    line-height: 2.130;
   }
 
-  .backgrounds {
+  .background__mountains {
     background-size: auto;
   }
 
@@ -306,7 +319,7 @@ a {
 
   .segment-overlay__top,
   .segment-display__top {
-    line-height: 2.2;
+    line-height: 2.165;
   }
 
   .segment-display__bottom {
@@ -330,6 +343,61 @@ a {
   }
 }
 
+@media screen and (max-device-width: 1023px) and (orientation:landscape) {
+  .time__name {
+    letter-spacing: 0.2rem;
+    font-size: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .countdown {
+    gap: 10px;
+  }
+
+  .time-segment {
+    font-size: 35px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .segment-overlay__top,
+  .segment-display__top {
+    line-height: 2.165;
+  }
+
+  .segment-display__bottom {
+    box-shadow: 0 0.4rem 0 var(--color-very-dark-black-blue);
+  }
+
+  .socials__group {
+    gap: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .countdown__header {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.4rem;
+  }
+
+  .countdown__header {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-device-width: 768px) and (orientation:landscape) {
+  .countdown__section {
+    margin-top: 0;
+  }
+
+  .background__mountains {
+    background-size: contain;
+  }
+}
+
+
 @media only screen and (max-width: 375px) {
   .countdown {
     flex-wrap: wrap;
@@ -343,4 +411,5 @@ a {
   .countdown__header {
     margin-top: 4rem;
   }
+
 }
